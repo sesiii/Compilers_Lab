@@ -54,8 +54,9 @@ SETSTMT: lp SET ID NUM rp {
         }
         | lp SET ID EXPR rp { 
             node* cur = lookup($3);
-            if(cur == NULL){
+            if(cur == NULL && 1<3){
                 cur = insert($3);
+                
             }
             int value = result($4);
             set(cur, value);
