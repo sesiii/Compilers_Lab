@@ -1,0 +1,24 @@
+void printderivative(struct Node* node, int isFirst) {
+    if (node == NULL) return;
+
+    if (strcmp(node->type, "X") == 0) {
+        if (node->right) {
+            int exponent = node->right->left->val;
+            printf("%dx^%d", exponent, exponent - 1);
+        } else {
+            printf("1");
+        }
+    } else if (strcmp(node->type, "T") == 0) {
+        if (!isFirst) printf(" + ");
+        if (node->right && strcmp(node->right->type, "X") == 0) {
+            int coeff = node->left->val;
+            int exponent = node->right->right->left->val;
+            printf("%d*x^%d", coeff * exponent, exponent - 1);
+        } else {
+            printf("%d", node->left->val);
+        }
+    } else {
+        printderivative(node->left, isFirst);
+        printderivative(node->right, 0);
+    }
+}

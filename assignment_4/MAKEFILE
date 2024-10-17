@@ -1,0 +1,43 @@
+parser.out: lex.yy.o y.tab.o 
+	g++ lex.yy.o y.tab.o -lfl -o parser.out
+
+lex.yy.o: lex.yy.c
+	g++ -c lex.yy.c
+
+y.tab.o: y.tab.c
+	g++ -c y.tab.c
+
+lex.yy.c: a.l y.tab.h 
+	flex a.l
+
+y.tab.c y.tab.h: a.y
+	bison -dty --report=all a.y
+
+libass2_20CS10029_20CS30042.a: ass2_20CS10029_20CS30042.o
+	ar -rcs libass2_20CS10029_20CS30042.a ass2_20CS10029_20CS30042.o
+
+ass2_20CS10029_20CS30042.o: ass2_20CS10029_20CS30042.c myl.h
+	gcc -c ass2_20CS10029_20CS30042.c
+
+clean:
+	rm libass2_20CS10029_20CS30042.a ass2_20CS10029_20CS30042.o parser.out  lex.yy.* y.tab.* y.output test*
+
+test: parser.out libass2_20CS10029_20CS30042.a
+
+	@echo "Generating assembly files\n"
+	./parser.out a_test1 > a_quads1.out
+
+	@echo "Compiling assembly files\n"
+	gcc a_test1.s -L. -lass2_20CS10029_20CS30042 -no-pie -o test1
+	
+	@echo "Binaries generated. Run using ./test<num>\n\n"
+	@echo "Running test1:\n"
+	@./test1
+	@echo "Running test2:\n"
+	@./test2
+	@echo "Running test4:\n"
+	@./test4
+	@echo "Running test5:\n"
+	@./test5
+	@echo "Running test6:\n"
+	@./test6
