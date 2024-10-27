@@ -25,9 +25,9 @@ expr.tab.c expr.tab.h: expr.y expr.h
 run: icgen
 	./icgen sample.txt
 	$(CC) $(CFLAGS) -o ic intcode.c $(LIBS)
-	./ic
+	./ic > output.txt
 
 clean:
-	rm -f *.o lex.yy.c expr.tab.c expr.tab.h icgen ic intcode.c
+	rm -f *.o lex.yy.c expr.tab.c expr.tab.h icgen ic intcode.c output.txt
 
 .PHONY: all run clean

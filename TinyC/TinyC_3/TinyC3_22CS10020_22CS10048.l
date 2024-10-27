@@ -1,10 +1,11 @@
 %{
     #include <stdio.h>
-    
-    #include "y.tab.h"
+    #include "TinyC3_22CS10020_22CS10048_translator.h"
+    #include "TinyC3_22CS10020_22CS10048.tab.h"
 
 %}
 
+/* %option noyywrap*/
 %option yylineno
 
 %x MULTI_LINE_COMMENT_BODY
@@ -148,20 +149,19 @@ NEWLINE                             \n
 "/*"                                { BEGIN(MULTI_LINE_COMMENT_BODY); }
 <MULTI_LINE_COMMENT_BODY>"*/"       { BEGIN(INITIAL);}
 <MULTI_LINE_COMMENT_BODY>.          { }
-<MULTI_LINE_COMMENT_BODY>"\n"       { /* printf("\n************** Line %d **************\n\n", yylineno); */ }
+<MULTI_LINE_COMMENT_BODY>"\n"       {  printf("\n************** Line %d **************\n\n", yylineno); }
 
 "//"                                { BEGIN(SINGLE_LINE_COMMENT_BODY); }
-<SINGLE_LINE_COMMENT_BODY>"\n"      { BEGIN(INITIAL);  /* printf("\n************** Line %d **************\n\n", yylineno); */}
+<SINGLE_LINE_COMMENT_BODY>"\n"      { BEGIN(INITIAL);   printf("\n************** Line %d **************\n\n", yylineno); }
 <SINGLE_LINE_COMMENT_BODY><<EOF>>   { BEGIN(INITIAL);}
 <SINGLE_LINE_COMMENT_BODY>.         { }
 
 {WHITESPACE}                        { /* ignore whitespace*/ }
-{NEWLINE}                           { /* printf("\n************** Line %d **************\n\n", yylineno); */ }
+{NEWLINE}                           {  printf("\n************** Line %d **************\n\n", yylineno);  }
 .                                   { printf("ERROR in Line %d : Invalid token %s\n", yylineno, yytext); return INVALID_TOKEN; }
 
 %%
 
-int yywrap(void)
-{
-	return 1;
+int yywrap(void) {
+    return 1; // Indicates end of input
 }

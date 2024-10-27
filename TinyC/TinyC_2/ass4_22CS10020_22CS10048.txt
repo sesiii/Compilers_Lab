@@ -1,0 +1,75 @@
+Parsing completed successfully.
+
+Symbol Table:
+-------------------------------------
+Token Name | Lexeme | Line Number
+-------------------------------------
+keyword    | int        | 1
+identifier | a          | 1
+punctuator | =          | 1
+integer-constant | 4          | 1
+punctuator | *          | 1
+integer-constant | 4          | 1
+punctuator | ;          | 1
+Single line comment | //comm 1   | 2
+keyword    | int        | 3
+identifier | main       | 3
+punctuator | (          | 3
+punctuator | )          | 3
+punctuator | {          | 4
+keyword    | int        | 5
+identifier | a          | 5
+punctuator | =          | 5
+integer-constant | 16         | 5
+punctuator | ;          | 5
+keyword    | if         | 6
+punctuator | (          | 6
+identifier | a          | 6
+punctuator | =          | 6
+integer-constant | 16         | 6
+punctuator | )          | 6
+punctuator | ;          | 6
+keyword    | int        | 8
+identifier | b          | 8
+punctuator | =          | 8
+integer-constant | 16         | 8
+punctuator | ;          | 8
+keyword    | if         | 9
+punctuator | (          | 9
+identifier | a          | 9
+punctuator | >          | 9
+integer-constant | 16         | 9
+punctuator | )          | 9
+punctuator | ;          | 9
+keyword    | int        | 11
+identifier | d          | 11
+punctuator | =          | 11
+integer-constant | 6          | 11
+punctuator | <          | 11
+integer-constant | 4          | 11
+punctuator | ;          | 11
+keyword    | return     | 12
+integer-constant | 0          | 12
+punctuator | ;          | 12
+keyword    | int        | 13
+identifier | b          | 13
+punctuator | =          | 13
+identifier | a          | 13
+punctuator | <          | 13
+identifier | d          | 13
+punctuator | ;          | 13
+keyword    | while      | 14
+punctuator | (          | 14
+identifier | a          | 14
+punctuator | >          | 14
+integer-constant | 16         | 14
+punctuator | )          | 14
+keyword    | int        | 14
+identifier | x          | 14
+punctuator | =          | 14
+identifier | a          | 14
+sign       | -          | 14
+integer-constant | 1          | 14
+punctuator | ;          | 14
+punctuator | }          | 16
+-------------------------------------

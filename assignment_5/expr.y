@@ -12,7 +12,7 @@ void yyerror(const char* s);
 #define DEBUG_PRINT(fmt, ...) \
     do { if (DEBUG) fprintf(stderr, "PARSER DEBUG: " fmt "\n", ##__VA_ARGS__); } while (0)
 
-// Function declarations
+
 exprNode* createConstNode(int value);
 exprNode* createIdNode(char* name);
 exprNode* createOpNode(char op, exprNode* left, exprNode* right);

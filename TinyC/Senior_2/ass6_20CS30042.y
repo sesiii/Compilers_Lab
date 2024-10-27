@@ -1,5 +1,5 @@
 %{
-    
+    #include "ass6_20CS30042_translator.h"
     extern int yylex();
     extern int yylineno;
     void yyerror(string);
