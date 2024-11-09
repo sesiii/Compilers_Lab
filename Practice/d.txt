@@ -1,2 +1,0 @@
-if (a == 10) // check if a is 10
-    b = a + 1;
