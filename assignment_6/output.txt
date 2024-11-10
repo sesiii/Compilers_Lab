@@ -1,0 +1,149 @@
+
+Blocks of intermediate code
+
+Block 1
+1 : x = 2024
+2 : n = 0
+3 : iffalse (x != 1) goto 
+
+Block 2
+5 : 12 = x % 2
+6 : iffalse ($0 == 1) goto 16
+
+Block 3
+8 : $1 = 3 * x
+9 : $2 = $1 + 1
+10 : x = $2
+11 : $3 = n + 1
+12 : n = $3
+13 : $4 = x / 2
+14 : x = $4
+15 : $5 = n + 1
+
+Block 4
+16 : n = $5
+18 : iffalse (n == 0) goto 
+
+Block 5
+
+Block 6
+20 : F = 0
+21 : iffalse (n == 1) goto 
+
+Block 7
+23 : F = 1
+24 : iffalse (n >= 2) goto 
+
+Block 8
+26 : m = 2
+27 : Fprev1 = 1
+28 : F = 0
+29 : iffalse (m <= n) goto 
+
+Block 9
+31 : $6 = Fprev1 + Fprev2
+32 : F = $6
+33 : Fprev2 = Fprev1
+34 : Fprev1 = F
+35 : $7 = m + 1
+
+Block 10
+36 : m = $7
+
+
+Target Assembly Code:
+Block 1
+1 : LDI R1 2024
+2 : ST x R1
+3 : LDI R2 0
+
+Block 2
+4 : ST n R2
+5 : LD R3 x
+6 : JNE R3 1 
+7 : JMP 
+8 : LD R1 x
+9 : REM R2 R1 2
+10 : ST 12 R2
+11 : LD R3 $0
+12 : JEQ R3 1 16
+13 : JMP 
+14 : LDI R1 3
+15 : LD R3 x
+
+Block 3
+16 : MUL R2 R1 R3
+17 : ST $1 R2
+18 : LD R4 $1
+
+Block 4
+19 : ADD R5 R4 1
+
+Block 5
+20 : ST $2 R5
+21 : LD R6 $2
+
+Block 6
+22 : ST x R6
+23 : LD R7 n
+24 : ADD R8 R7 1
+
+Block 7
+25 : ST $3 R8
+26 : LD R9 $3
+27 : ST n R9
+28 : LD R10 x
+29 : DIV R11 R10 2
+
+Block 8
+30 : ST $4 R11
+31 : LD R12 $4
+32 : ST x R12
+33 : LD R13 n
+34 : ADD R14 R13 1
+35 : ST $5 R14
+
+Block 9
+36 : LD R1 $5
+37 : ST n R1
+38 : JMP 20
+39 : LD R2 n
+40 : JEQ R2 0 
+41 : JMP 
+42 : LDI R1 0
+43 : ST F R1
+44 : LD R2 n
+45 : JEQ R2 1 
+46 : JMP 
+47 : LDI R1 1
+48 : ST F R1
+49 : LD R2 n
+50 : JGE R2 2 
+51 : JMP 
+52 : LDI R1 2
+53 : ST m R1
+54 : LDI R2 1
+55 : ST Fprev1 R2
+56 : LDI R3 0
+57 : ST F R3
+58 : LD R4 m
+59 : LD R5 n
+60 : JLE R4 R5 
+61 : JMP 
+62 : LD R1 Fprev1
+63 : LD R3 Fprev2
+64 : ADD R2 R1 R3
+65 : ST $6 R2
+66 : LD R4 $6
+67 : ST F R4
+68 : LD R5 Fprev1
+69 : ST Fprev2 R5
+70 : LD R6 F
+71 : ST Fprev1 R6
+72 : LD R7 m
+73 : ADD R8 R7 1
+74 : ST $7 R8
+75 : LD R1 $7
+76 : ST m R1
+77 : JMP 36
+
