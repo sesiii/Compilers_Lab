@@ -1,0 +1,21 @@
+Variable a set is to 5
+Variable b set to 5
+Variable c set to 35
+Standalone expression evaluates to 3150
+
+Variable a set is to 2
+Variable b set is to 9
+Standalone expression evaluates to 5
+
+Variable tmp set to 9
+Variable b set to 43
+Variable a set to 9
+Standalone expression evaluates to 5
+
+Variable tmp set to 43
+Variable b set to 206
+Variable a set to 43
+Standalone expression evaluates to 5
+
+
+
