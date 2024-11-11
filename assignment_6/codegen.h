@@ -56,4 +56,7 @@ void free_register(int reg, struct reg_descriptor *regs);
 void store_variables(struct reg_descriptor *regs, int num_regs);
 int get_reg_containing(char *var, struct reg_descriptor *regs, int num_regs);
 void emit_target(enum opcode op, const char* dest, const char* src1, const char* src2);
+const char* opcode_to_str(enum opcode op);
+char* get_register(int reg_num);
+
 #endif
